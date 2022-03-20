@@ -24,27 +24,46 @@ const database = getDatabase(app);
 
 
 document.getElementById("signUp").addEventListener("click",(e)=>{
-var email = document.getElementById('femail').value;
-var password = document.getElementById('fpass').value;
-var username = document.getElementById('fname').value;
+  var email = document.getElementById('femail').value;
+  var password = document.getElementById('fpass').value;
+  var username = document.getElementById('fname').value;
+  var fnum = document.getElementById('fnumber').value;
+  var studentBtn = document.getElementById("studentBtn");
+  var teacherBtn = document.getElementById("teacherBtn");
+  var role = "";
   const auth = getAuth();
   console.log(email);
+
+  if(studentBtn.checked){
+    role = "Student"
+  }else if(teacherBtn.checked){
+    role = "Teacher"
+  }
+
+if(email===""||password===""||fnum===""||role===""){
+  alert("Please enter valid information!")
+}else{
   createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-  // Signed in 
-      const user = userCredential.user;
-      set(ref(database,'users/'+user.uid),{
-        username:username,
-        email:email
-      });
-      window.location.href = "panelTeacher.html"
-  // ...
-})
-.catch((error) => {
-  const errorCode = error.code;
-  const errorMessage = error.message;
+   // Signed in 
+    const user = userCredential.user;
 
-  alert(errorMessage);
+    set(ref(database, 'users/' + user.uid),{
+        username: username,
+        email: email,
+        fnum:fnum,
+        role:role
+
+    });
+
+    alert('User created! You can now log in!');
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    alert(errorMessage);
   // ..
-});
+  });
+}
 });

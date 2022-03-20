@@ -21,22 +21,19 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const auth = getAuth();
+var user;
 
 
 document.getElementById("signIn").addEventListener('click', (e)=>{
-    var email = document.getElementById('femail').value;
-    var password = document.getElementById('fpass').value;
-    const auth = getAuth();
+    let email = document.getElementById('femail').value;
+    let password = document.getElementById('fpass').value;
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
-        const user = userCredential.user;
         const dt = new Date();
-        update(ref(database,'users/'+user.uid),{
-          last_login:dt
-        });
-        window.location.href = "panelTeacher.html"
-        // ...
+        user = userCredential.user;
+        window.location = 'panelTeacher.html';
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -44,5 +41,8 @@ document.getElementById("signIn").addEventListener('click', (e)=>{
   
         alert("Wrong user crediterials!");
       });
+
   });
+
+
   
