@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-analytics.js";
-import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -33,7 +32,18 @@ document.getElementById("signIn").addEventListener('click', (e)=>{
         // Signed in 
         const dt = new Date();
         user = userCredential.user;
-        window.location = 'panelTeacher.html';
+        let data;
+        //window.location = 'panelTeacher.html';
+        const roleRef = ref(database, 'users/' + user.uid + '/role');
+        onValue(roleRef, (snapshot) => {
+          data = snapshot.val();
+        });
+        if(data === "Teacher"){
+          window.location = 'panelTeacher.html';
+        }else{
+          window.location = 'panelStudent.html';
+        }
+
       })
       .catch((error) => {
         const errorCode = error.code;

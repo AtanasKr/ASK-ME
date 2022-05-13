@@ -26,15 +26,15 @@ auth.onAuthStateChanged((user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
       //getting user ref in order to reach user data in database
-      const userRef = ref(database, 'users/' + user.uid + '/username');
+      const userRef = ref(database, 'users/' + user.uid);
       onValue(userRef, (snapshot) => {
       const data = snapshot.val();
-      document.getElementById("name").innerHTML = "Welcome: "+data; 
+      console.log(data);
 });
       // ...
     } else {
       // User is signed out
-      console.log("The user is signed off!");
+      console.log("The user is signed off!")
     }
   });
 

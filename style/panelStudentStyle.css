@@ -78,21 +78,6 @@
     -o-animation: fadein 2s; /* Opera < 12.1 */
     animation: fadein 2s;
   }
-
-  .buttons{
-    display: grid;
-    align-items: center; 
-    justify-content: center;
-    padding-top: 2em;
-  }
-
-  .right{
-    padding-top: 2.8em;
-    float: right;
-    padding-right: 2em;
-    font-size: 1.5em;
-    color: white;
-  }
   .left{
     padding-top: 2em;
     padding-left: 2em;
@@ -117,6 +102,53 @@
     /* Set the hr color */
     color: #333; /* old IE */
     background-color: #333; /* Modern Browsers */
+  }
+
+  .name{
+    margin-top:2em;
+    font-size: 2em;
+    margin-right: 15em;
+    background-color: #2C93F3;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 20em;
+    border-radius: 0em 3em 3em 0em;
+    border: 2px solid #2C93F3;
+  }
+
+  .group{
+    margin-top:1.2em;
+    font-size: 2em;
+    margin-right: 22em;
+    background-color: #2C93F3;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 20em;
+    border-radius: 0em 3em 3em 0em;
+    border: 2px solid #2C93F3;
+  }
+
+  .facnum{
+    margin-top:1.2em;
+    font-size: 2em;
+    margin-right: 13em;
+    background-color: #2C93F3;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 16em;
+    border-radius: 0em 3em 3em 0em;
+    border: 2px solid #2C93F3;
+  }
+
+  .buttons{
+    display: grid;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
   }
   
 
