@@ -38,6 +38,44 @@ auth.onAuthStateChanged((user) => {
     }
   });
 
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      //getting user ref in order to reach user data in database
+        const userRef = ref(database, 'users/' + user.uid + '/username');
+        onValue(userRef, (snapshot) => {
+            const data = snapshot.val();
+            document.getElementById("name").innerHTML = "Name: "+data;     
+        });
+
+        const groupRef = ref(database, 'users/' + user.uid + '/email');
+        onValue(groupRef, (snapshot) => {
+            const data = snapshot.val();
+            document.getElementById("email").innerHTML = "Email: "+data;     
+        });
+
+        const facNumRef = ref(database, 'users/' + user.uid + '/fnum');
+        onValue(facNumRef, (snapshot) => {
+            const data = snapshot.val();
+            document.getElementById("fnum").innerHTML = "Faculty number: "+data;     
+        });
+      // ...
+    } else {
+      // User is signed out
+      console.log("The user is signed off!");
+    }
+  });
+
+  document.getElementById("signOut").addEventListener("click",(e)=>{
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        window.location = 'index.html';
+      }).catch((error) => {
+        // An error happened.
+        console.log(error.message);
+      });
+  });
+
   document.getElementById("signOut").addEventListener("click",(e)=>{
     signOut(auth).then(() => {
         // Sign-out successful.
