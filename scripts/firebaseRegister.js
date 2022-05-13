@@ -42,6 +42,8 @@ document.getElementById("signUp").addEventListener("click",(e)=>{
 
 if(email===""||password===""||fnum===""||role===""){
   alert("Please enter valid information!")
+}else if(fnum.length!==9){
+  alert("Entered faculty number is invalid!")
 }else{
   createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {

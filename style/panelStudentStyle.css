@@ -56,6 +56,8 @@
       opacity: 1;
     }
   }
+
+
   
   .button {
     margin-top: 1.1em;
@@ -107,7 +109,7 @@
   .name{
     margin-top:2em;
     font-size: 2em;
-    margin-right: 15em;
+    margin-right: 16em;
     background-color: #2C93F3;
     color: white;
     padding-top: 0.5em;
@@ -150,6 +152,94 @@
     padding-top: 2em;
     padding-bottom: 2em;
   }
-  
 
+  @media (max-width: 1485px) {
+    .name{
+      padding-left: 16em;
+    }
+  
+    .email{
+      padding-left: 16.2em;
+    }
+  
+    .facnum{
+      padding-left: 11.8em;
+    }
+  }
+
+  @media (max-width: 1350px) {
+    .name{
+      padding-left: 11em;
+    }
+  
+    .email{
+      padding-left: 11.2em;
+    }
+  
+    .facnum{
+      padding-left: 6.8em;
+    }
+  }
+
+  @media (max-width: 1195px) {
+    .name{
+      padding-left: 6.5em;
+    }
+  
+    .email{
+      padding-left: 6.7em;
+    }
+  
+    .facnum{
+      padding-left: 1.3em;
+    }
+  }
+
+  @media (max-width: 1060px) {
+    .name{
+      padding-left: 2em;
+    }
+  
+    .email{
+      padding-left: 2.2em;
+    }
+  
+    .facnum{
+      padding-left: 1.3em;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .name{
+      padding-left: 2em;
+      font-size: 1.5em;
+    }
+  
+    .email{
+      padding-left: 2.2em;
+      font-size: 1.5em;
+    }
+  
+    .facnum{
+      padding-left: 1.3em;
+      font-size: 1.5em;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .name{
+      padding-left: 2em;
+      font-size: 1em;
+    }
+  
+    .email{
+      padding-left: 2.2em;
+      font-size: 1em;
+    }
+  
+    .facnum{
+      padding-left: 1.3em;
+      font-size: 1em;
+    }
+  }
   
