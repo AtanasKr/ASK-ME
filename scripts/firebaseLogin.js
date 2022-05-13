@@ -37,12 +37,12 @@ document.getElementById("signIn").addEventListener('click', (e)=>{
         const roleRef = ref(database, 'users/' + user.uid + '/role');
         onValue(roleRef, (snapshot) => {
           data = snapshot.val();
+          if(data === "Teacher"){
+            window.location = 'panelTeacher.html';
+          }else{
+            window.location = 'panelStudent.html';
+          }
         });
-        if(data === "Teacher"){
-          window.location = 'panelTeacher.html';
-        }else{
-          window.location = 'panelStudent.html';
-        }
 
       })
       .catch((error) => {
