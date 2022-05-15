@@ -74,7 +74,6 @@ $(document).ready(function() {
       self.id = id;
       self.name = name;
       self.facnum = facnum;
-      self.postedAt = postedAt;
       self.results = results;
       self.jsonResultsValue = null;
       self.getJsonResults = function() {
@@ -95,7 +94,6 @@ $(document).ready(function() {
               i + 1,
               item.name,
               item.facnum,
-              item.postedAt,
               item.results
             )
           );
