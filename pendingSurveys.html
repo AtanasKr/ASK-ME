@@ -23,13 +23,14 @@
     </div>
 
     <script>
-        function copyFunc(id) {
+        function goToFunc(id) {
           var copyText = document.getElementById(id);
           copyText.select();
+          //for phones
           copyText.setSelectionRange(0, 99999);
           navigator.clipboard.writeText(copyText.value);
-
-          alert("Copied Json"+copyText.value);
+          localStorage.setItem("jsonText",copyText.value);
+          window.location = 'surveyVisualizer.html';
         }
         </script>
 </body>

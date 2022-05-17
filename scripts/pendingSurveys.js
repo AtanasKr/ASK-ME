@@ -28,7 +28,7 @@ function clearList(){
 function addElementToList(surveyJson){
     var completelist= document.getElementById("pendingList");
     
-    completelist.innerHTML += "<li><input type='text' value='"+surveyJson+"' id='"+counter+"'>" + "<button onclick='copyFunc("+counter+")'> <span class='tooltiptext' id='myTooltip'>Get Json"+counter+"</span></button></li><br>";
+    completelist.innerHTML += "<li><input type='text' value='"+surveyJson+"' id='"+counter+"'>" + "<button onclick='goToFunc("+counter+")'> <span class='tooltiptext' id='myTooltip'>Go to Survey"+counter+"</span></button></li><br>";
     counter++;
 }
 auth.onAuthStateChanged((user) => {
@@ -41,7 +41,6 @@ auth.onAuthStateChanged((user) => {
           clearList();
           data.forEach(function(childSnapshot){
             addElementToList(childSnapshot.val().json);
-            console.log(childSnapshot.val().json)
           });
       });
       // ...
