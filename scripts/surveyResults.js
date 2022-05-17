@@ -66,10 +66,22 @@ $(document).ready(function() {
             "question3": "awda",
             "question4": "awda"
         },
-      },
+      },{
+        name: 'Anna',
+        facnum: '1231231',
+        results: {
+            "question6": [
+                "item1"
+            ],
+            "question1": "dawd",
+            "question2": "awda",
+            "question3": "awda",
+            "question4": "awda"
+        },
+      }
     ];
   
-    function surveyResultModel(id, name, facnum, postedAt, results) {
+    function surveyResultModel(id, name, facnum, results) {
       var self = this;
       self.id = id;
       self.name = name;
