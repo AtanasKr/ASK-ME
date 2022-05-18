@@ -25,11 +25,15 @@
     <script>
         function goToFunc(id) {
           var copyJson = document.getElementById(id);
+          var copyFrom = document.getElementById(id+"from");
           copyJson.select();
+          copyFrom.select();
           //for phones
           copyJson.setSelectionRange(0, 99999);
+          copyFrom.setSelectionRange(0, 99999);
           navigator.clipboard.writeText(copyJson.value);
           localStorage.setItem("jsonText",copyJson.value);
+          localStorage.setItem("fromText",copyFrom.value);
           window.location = 'surveyVisualizer.html';
         }
         </script>
