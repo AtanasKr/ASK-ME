@@ -24,12 +24,12 @@
 
     <script>
         function goToFunc(id) {
-          var copyText = document.getElementById(id);
-          copyText.select();
+          var copyJson = document.getElementById(id);
+          copyJson.select();
           //for phones
-          copyText.setSelectionRange(0, 99999);
-          navigator.clipboard.writeText(copyText.value);
-          localStorage.setItem("jsonText",copyText.value);
+          copyJson.setSelectionRange(0, 99999);
+          navigator.clipboard.writeText(copyJson.value);
+          localStorage.setItem("jsonText",copyJson.value);
           window.location = 'surveyVisualizer.html';
         }
         </script>

@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getDatabase, ref, onValue, push, update} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
-import { getAuth, signOut} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import { getDatabase, ref, onValue} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+import { getAuth} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDkZEmYPaS6ZU4pq3mkTFrO9r7Ua_1i-Jo",
@@ -25,7 +25,7 @@ function clearList(){
     completelist.innerHTML = "";
 }
 
-function addElementToList(surveyJson){
+function addElementToList(surveyJson,from){
     var completelist= document.getElementById("pendingList");
     
     completelist.innerHTML += "<li><input type='text' value='"+surveyJson+"' id='"+counter+"'>" + "<button onclick='goToFunc("+counter+")'> <span class='tooltiptext' id='myTooltip'>Go to Survey"+counter+"</span></button></li><br>";
@@ -40,7 +40,7 @@ auth.onAuthStateChanged((user) => {
           const data = snapshot;
           clearList();
           data.forEach(function(childSnapshot){
-            addElementToList(childSnapshot.val().json);
+            addElementToList(childSnapshot.val().json,childSnapshot.val());
           });
       });
       // ...
