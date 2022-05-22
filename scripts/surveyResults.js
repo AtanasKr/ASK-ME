@@ -34,7 +34,7 @@ const auth = getAuth();
         return self.jsonResultsValue;
       };
     }
-    
+
     var surveyResultsDataFromDB=[];
     var surveyJSONFromDB = [];
     function surveyResultsModel(data) {
@@ -56,6 +56,8 @@ const auth = getAuth();
       self.koItems = ko.observableArray(items);
       self.showSurveyResult = function(item) {
         localStorage.setItem("jsonToVisualize",surveyJSONFromDB[item.id-1].json);
+        localStorage.setItem("counterRow",surveyJSONFromDB[item.id-1].counter);
+        debugger;
         window.location="resultVisualize.html"
       };
     }

@@ -20,9 +20,8 @@ const database = getDatabase(app);
 const auth = getAuth();
 
   
-    function surveyResultModel(id, name, facnum, results) {
+    function surveyResultModel(name, facnum, results) {
       var self = this;
-      self.id = id;
       self.name = name;
       self.facnum = facnum;
       self.results = results;
@@ -34,7 +33,6 @@ const auth = getAuth();
         return self.jsonResultsValue;
       };
     }
-    var json;
     var surveyResultsDataFromDB=[];
     var surveyJSONFromDB = [];
     function surveyResultsModel(data) {
@@ -45,7 +43,6 @@ const auth = getAuth();
           var item = data[i];
           items.push(
             new surveyResultModel(
-              i + 1,
               item.name,
               item.facnum,
               item.results
@@ -60,10 +57,12 @@ const auth = getAuth();
       };
     }
 
+    var getCount = localStorage.getItem("counterRow");
     const resultRef = ref(database, 'resultHolder');
         onValue(resultRef, (snapshot) => {
             const data = snapshot;
             var count = 0;
+            var obj = 0;
             data.forEach(function(childSnapshot){
               var holderForTable = {
                 name:"",
@@ -83,13 +82,17 @@ const auth = getAuth();
               console.log(childSnapshot.val());
               surveyResultsDataFromDB.push(holderForTable);
               surveyJSONFromDB.push(holderForSurvey);
-              
-
+              if(count==getCount){
+                obj = holderForTable;
+              }
+              debugger;
               count++;
 
   });
+  var holder = [];
+  holder.push(obj);
   ko.applyBindings(
-    new surveyResultsModel(surveyResultsDataFromDB),
+    new surveyResultsModel(holder),
     document.getElementById('resultsTable')
   );
 
