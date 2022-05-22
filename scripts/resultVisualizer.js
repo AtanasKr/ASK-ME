@@ -34,7 +34,7 @@ const auth = getAuth();
         return self.jsonResultsValue;
       };
     }
-    
+    var json;
     var surveyResultsDataFromDB=[];
     var surveyJSONFromDB = [];
     function surveyResultsModel(data) {
@@ -55,8 +55,8 @@ const auth = getAuth();
       }
       self.koItems = ko.observableArray(items);
       self.showSurveyResult = function(item) {
-        localStorage.setItem("jsonToVisualize",surveyJSONFromDB[item.id-1].json);
-        window.location="resultVisualize.html"
+        window.windowSurvey.survey.data = item.getJsonResults();
+        window.windowSurvey.isExpanded = true;
       };
     }
 
@@ -75,12 +75,12 @@ const auth = getAuth();
                 json:"",
                 counter:""
               }
-              console.log(childSnapshot.val().jsonSurvey)
               holderForTable.name="dada";
               holderForTable.facnum = 123456;
               holderForTable.results = JSON.parse(childSnapshot.val().jsonResult);
               holderForSurvey.json = childSnapshot.val().jsonSurvey;
               holderForSurvey.counter = count;
+              console.log(childSnapshot.val());
               surveyResultsDataFromDB.push(holderForTable);
               surveyJSONFromDB.push(holderForSurvey);
               
@@ -92,6 +92,15 @@ const auth = getAuth();
     new surveyResultsModel(surveyResultsDataFromDB),
     document.getElementById('resultsTable')
   );
+
+ var json = JSON.parse(localStorage.getItem("jsonToVisualize"));
+  Survey.Survey.cssType = 'bootstrap';
+  var windowSurvey = new Survey.SurveyWindow(json);
+  windowSurvey.survey.mode = "display";
+  windowSurvey.survey.title = "Current survey";
+  windowSurvey.show();
+  window.windowSurvey = windowSurvey;
+  debugger;
 });
 
   
