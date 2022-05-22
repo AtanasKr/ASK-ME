@@ -1,85 +1,24 @@
-$(document).ready(function() {
-    var surveyJSONFromDB = {
-        "logoPosition": "right",
-        "pages": [
-         {
-          "name": "page1",
-          "elements": [
-           {
-            "type": "checkbox",
-            "name": "question6",
-            "choices": [
-             "item1",
-             "item2",
-             "item3"
-            ]
-           },
-           {
-            "type": "text",
-            "name": "question1",
-            "title": "awda",
-            "description": "awfaw"
-           },
-           {
-            "type": "text",
-            "name": "question2"
-           },
-           {
-            "type": "text",
-            "name": "question3"
-           },
-           {
-            "type": "text",
-            "name": "question4"
-           },
-           {
-            "type": "file",
-            "name": "question5"
-           }
-          ]
-         }
-        ]
-       };
-  
-    var surveyResultsDataFromDB = [
-      {
-        name: 'Anna',
-        facnum: '1231231',
-        results: {
-            "question6": [
-                "item1"
-            ],
-            "question1": "dawd",
-            "question2": "awda",
-            "question3": "awda",
-            "question4": "awda"
-        },
-      },{
-        name: 'Anna',
-        facnum: '1231231',
-        results: {
-            "question6": [
-                "item1"
-            ],
-            "question1": "dawd",
-            "question2": "awda",
-            "question3": "awda",
-            "question4": "awda"
-        },
-      },{
-        name: 'Anna',
-        facnum: '1231231',
-        results: {
-            "question6": [
-                "item1"
-            ],
-            "question1": "dawd",
-            "question2": "awda",
-            "question3": "awda",
-            "question4": "awda"
-        },
-      }
-    ];
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+import { getDatabase, ref, onValue, push, update} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+import { getAuth} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDkZEmYPaS6ZU4pq3mkTFrO9r7Ua_1i-Jo",
+  authDomain: "ask-me-1d534.firebaseapp.com",
+  projectId: "ask-me-1d534",
+  storageBucket: "ask-me-1d534.appspot.com",
+  messagingSenderId: "1069134548159",
+  appId: "1:1069134548159:web:f24d2cc880438e907cca0a",
+  measurementId: "G-CWXG9BYSDB"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth();
+
   
     function surveyResultModel(id, name, facnum, results) {
       var self = this;
@@ -95,6 +34,9 @@ $(document).ready(function() {
         return self.jsonResultsValue;
       };
     }
+    var json;
+    var surveyResultsDataFromDB=[];
+    var surveyJSONFromDB = [];
     function surveyResultsModel(data) {
       var self = this;
       var items = [];
@@ -115,19 +57,59 @@ $(document).ready(function() {
       self.showSurveyResult = function(item) {
         window.windowSurvey.survey.data = item.getJsonResults();
         window.windowSurvey.isExpanded = true;
+
+
+        json = JSON.parse(surveyJSONFromDB[item.id-1].json);
+        windowSurvey = Survey.SurveyWindow(json);
+        windowSurvey.survey.mode = "display";
+        windowSurvey.survey.title = "Current survey";
+        windowSurvey.show();
+        window.windowSurvey = windowSurvey;
+        window.windowSurvey.survey.data = item.getJsonResults();
+        window.windowSurvey.isExpanded = true;
+        debugger;
       };
     }
-    ko.applyBindings(
-      new surveyResultsModel(surveyResultsDataFromDB),
-      document.getElementById('resultsTable')
-    );
-  
-    Survey.Survey.cssType = 'bootstrap';
-    var json = surveyJSONFromDB;
-    var windowSurvey = new Survey.SurveyWindow(json);
-    windowSurvey.survey.mode = "display";
-    windowSurvey.survey.title = "Current survey";
-    windowSurvey.show();
-    window.windowSurvey = windowSurvey;
+
+    const resultRef = ref(database, 'resultHolder');
+        onValue(resultRef, (snapshot) => {
+            const data = snapshot;
+            var count = 0;
+            data.forEach(function(childSnapshot){
+              var holderForTable = {
+                name:"",
+                facnum:"",
+                results:""
+              };
+              
+              var holderForSurvey = {
+                json:"",
+                counter:""
+              }
+              console.log(childSnapshot.val().jsonSurvey)
+              holderForTable.name="dada";
+              holderForTable.facnum = 123456;
+              holderForTable.results = JSON.parse(childSnapshot.val().jsonResult);
+              holderForSurvey.json = childSnapshot.val().jsonSurvey;
+              holderForSurvey.counter = count;
+              surveyResultsDataFromDB.push(holderForTable);
+              surveyJSONFromDB.push(holderForSurvey);
+              
+
+              count++;
+
   });
+  json = JSON.parse(surveyJSONFromDB[0].json);
+  ko.applyBindings(
+    new surveyResultsModel(surveyResultsDataFromDB),
+    document.getElementById('resultsTable')
+  );
+  Survey.Survey.cssType = 'bootstrap';
+  var windowSurvey = new Survey.SurveyWindow(json);
+  windowSurvey.survey.mode = "display";
+  windowSurvey.survey.title = "Current survey";
+  windowSurvey.show();
+  window.windowSurvey = windowSurvey;
+});
+
   

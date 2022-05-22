@@ -23,17 +23,22 @@
     </div>
 
     <script>
-        function goToFunc(id) {
-          var copyJson = document.getElementById(id);
-          var copyFrom = document.getElementById(id+"from");
+        function goToFunc(counter) {
+          var copyJson = document.getElementById(counter);
+          var copyFrom = document.getElementById(counter+"from");
+          var copyId = document.getElementById(counter+"id")
           copyJson.select();
           copyFrom.select();
+          copyId.select();
           //for phones
           copyJson.setSelectionRange(0, 99999);
           copyFrom.setSelectionRange(0, 99999);
+          copyId.setSelectionRange(0,99999);
+
           navigator.clipboard.writeText(copyJson.value);
           localStorage.setItem("jsonText",copyJson.value);
           localStorage.setItem("fromText",copyFrom.value);
+          localStorage.setItem("idText",copyId.value);
           window.location = 'surveyVisualizer.html';
         }
         </script>
