@@ -78,8 +78,8 @@ const auth = getAuth();
                 counter:""
               }
               console.log(childSnapshot.val().jsonSurvey)
-              holderForTable.name="dada";
-              holderForTable.facnum = 123456;
+              holderForTable.name=childSnapshot.val().name;
+              holderForTable.facnum = childSnapshot.val().fnum;
               holderForTable.results = JSON.parse(childSnapshot.val().jsonResult);
               holderForSurvey.json = childSnapshot.val().jsonSurvey;
               holderForSurvey.counter = count;

@@ -27,18 +27,26 @@
           var copyJson = document.getElementById(counter);
           var copyFrom = document.getElementById(counter+"from");
           var copyId = document.getElementById(counter+"id")
+          var copyName = document.getElementById(counter+"name");
+          var copyFnum = document.getElementById(counter+"fnum");
           copyJson.select();
           copyFrom.select();
           copyId.select();
+          copyName.select();
+          copyFnum.select();
           //for phones
           copyJson.setSelectionRange(0, 99999);
           copyFrom.setSelectionRange(0, 99999);
           copyId.setSelectionRange(0,99999);
+          copyName.setSelectionRange(0, 99999);
+          copyFnum.setSelectionRange(0,99999);
 
           navigator.clipboard.writeText(copyJson.value);
           localStorage.setItem("jsonText",copyJson.value);
           localStorage.setItem("fromText",copyFrom.value);
           localStorage.setItem("idText",copyId.value);
+          localStorage.setItem("nameText",copyName.value);
+          localStorage.setItem("fnumText",copyFnum.value);
           window.location = 'surveyVisualizer.html';
         }
         </script>

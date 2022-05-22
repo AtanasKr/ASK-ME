@@ -25,10 +25,10 @@ function clearList(){
     completelist.innerHTML = "";
 }
 
-function addElementToList(surveyJson,from,id){
+function addElementToList(surveyJson,from,id,name,fnum){
     var completelist= document.getElementById("pendingList");
     
-    completelist.innerHTML += "<li><input type='text' value='"+id+"' id='"+counter+"id'><input type='text' value='"+from+"' id='"+counter+"from'><input type='text' value='"+surveyJson+"' id='"+counter+"'>" + "<button onclick='goToFunc("+counter+")'> <span class='tooltiptext' id='myTooltip'>Go to Survey"+counter+"</span></button></li><br>";
+    completelist.innerHTML += "<li><input type='text' value='"+fnum+"' id='"+counter+"fnum'><input type='text' value='"+name+"' id='"+counter+"name'><input type='text' value='"+id+"' id='"+counter+"id'><input type='text' value='"+from+"' id='"+counter+"from'><input type='text' value='"+surveyJson+"' id='"+counter+"'>" + "<button onclick='goToFunc("+counter+")'> <span class='tooltiptext' id='myTooltip'>Go to Survey"+counter+"</span></button></li><br>";
     counter++;
 }
 auth.onAuthStateChanged((user) => {
@@ -40,7 +40,7 @@ auth.onAuthStateChanged((user) => {
           const data = snapshot;
           clearList();
           data.forEach(function(childSnapshot){
-            addElementToList(childSnapshot.val().json,childSnapshot.val().from,childSnapshot.val().id);
+            addElementToList(childSnapshot.val().json,childSnapshot.val().from,childSnapshot.val().id,childSnapshot.val().name,childSnapshot.val().fnum);
             console.log(childSnapshot);
           });
       });
