@@ -13,9 +13,9 @@
     <p class="role-info">I am a?</p>
 
     <div class="radio-btns">
-        <input type="radio" id="studentBtn" name="drone" value="Student">
+        <input type="radio" id="studentBtn" name="drone" value="Student" onclick="enableFnum()">
         <label class="radio-btn-text" for="Student">Student</label>
-        <input type="radio" id="teacherBtn" name="drone" value="Teacher">
+        <input type="radio" id="teacherBtn" name="drone" value="Teacher" onclick="disableFnum()">
         <label class="radio-btn-text2" for="Teacher">Teacher</label>
     </div>
 
@@ -27,5 +27,14 @@
     </div>
     
     <a href="#" id="signUp" class="signup-btn">Sign up</a>
+    <script>
+        function disableFnum() {
+          document.getElementById("fnumber").disabled = true;
+        }
+        
+        function enableFnum() {
+          document.getElementById("fnumber").disabled = false;
+        }
+        </script>
 </body>
 </html>

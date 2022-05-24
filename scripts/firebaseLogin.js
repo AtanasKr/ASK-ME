@@ -30,7 +30,6 @@ document.getElementById("signIn").addEventListener('click', (e)=>{
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
-        const dt = new Date();
         user = userCredential.user;
         let data;
         //window.location = 'panelTeacher.html';

@@ -41,7 +41,6 @@ auth.onAuthStateChanged((user) => {
           clearList();
           data.forEach(function(childSnapshot){
             addElementToList(childSnapshot.val().json,childSnapshot.val().from,childSnapshot.val().id,childSnapshot.val().name,childSnapshot.val().fnum);
-            console.log(childSnapshot);
           });
       });
       // ...

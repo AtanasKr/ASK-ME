@@ -31,7 +31,6 @@ document.getElementById("signUp").addEventListener("click",(e)=>{
   var teacherBtn = document.getElementById("teacherBtn");
   var role = "";
   const auth = getAuth();
-  console.log(email);
 
   if(studentBtn.checked){
     role = "Student"
@@ -39,9 +38,9 @@ document.getElementById("signUp").addEventListener("click",(e)=>{
     role = "Teacher"
   }
 
-if(email===""||password===""||fnum===""||role===""){
+if((role==="Student"&&(email===""||password===""||fnum===""||role===""))||(role==="Teacher"&&(email===""||password===""||role===""))){
   alert("Please enter valid information!")
-}else if(fnum.length!==9){
+}else if(fnum.length!==9&&role!=="Teacher"){
   alert("Entered faculty number is invalid!")
 }else{
   createUserWithEmailAndPassword(auth, email, password)
