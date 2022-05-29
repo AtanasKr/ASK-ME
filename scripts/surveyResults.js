@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
 import { getDatabase, ref, onValue} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+import { getAuth} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -16,19 +17,20 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const auth = getAuth();
 var userUid;
 
-// auth.onAuthStateChanged((user) => {
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     //getting user ref in order to reach user data in database
-//     userUid = user.uid;
-//     // ...
-//   } else {
-//     // User is signed out
-//     console.log("The user is signed off!");
-//   }
-// });
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    //getting user ref in order to reach user data in database
+    userUid = user.uid;
+    // ...
+  } else {
+    // User is signed out
+    console.log("The user is signed off!");
+  }
+});
 
 
   
@@ -70,7 +72,6 @@ var userUid;
         localStorage.setItem("jsonToVisualize",surveyJSONFromDB[item.id-1].json);
         localStorage.setItem("counterRow",surveyJSONFromDB[item.id-1].counter);
         localStorage.setItem("surveyData",JSON.stringify(surveyResultsDataFromDB[item.id-1].results));
-        debugger;
         window.location="resultVisualize.html"
       };
     }
@@ -90,20 +91,20 @@ var userUid;
                 json:"",
                 counter:""
               }
-              if(true){
+              debugger;
+              if(userUid===childSnapshot.val().from){
+                console.log(childSnapshot.val().jsonSurvey)
+                holderForTable.name=childSnapshot.val().name;
+                holderForTable.facnum = childSnapshot.val().fnum;
+                holderForTable.results = JSON.parse(childSnapshot.val().jsonResult);
+                holderForSurvey.json = childSnapshot.val().jsonSurvey;
+                holderForSurvey.counter = count;
+                surveyResultsDataFromDB.push(holderForTable);
+                surveyJSONFromDB.push(holderForSurvey);
                 
+  
+                count++; 
               }
-              console.log(childSnapshot.val().jsonSurvey)
-              holderForTable.name=childSnapshot.val().name;
-              holderForTable.facnum = childSnapshot.val().fnum;
-              holderForTable.results = JSON.parse(childSnapshot.val().jsonResult);
-              holderForSurvey.json = childSnapshot.val().jsonSurvey;
-              holderForSurvey.counter = count;
-              surveyResultsDataFromDB.push(holderForTable);
-              surveyJSONFromDB.push(holderForSurvey);
-              
-
-              count++;
 
   });
   ko.applyBindings(
