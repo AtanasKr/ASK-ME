@@ -1,12 +1,20 @@
-// Show Designer, Test Survey, JSON Editor and additionally Logic tabs
-var options = {
-    showLogicTab: true
+const creatorOptions = {
+    showLogicTab: true,
+    isAutoSave: true
 };
-//create the SurveyJS Creator and render it in div with id equals to "creatorElement"
-var creator = new SurveyCreator.SurveyCreator("creatorElement", options);
-//Show toolbox in the right container. It is shown on the left by default
-creator.showToolbox = "right";
-//Show property grid in the right container, combined with toolbox
-creator.showPropertyGrid = "right";
-//Make toolbox active by default
-creator.rightContainerActiveItem("toolbox");
+
+const creator = new SurveyCreator.SurveyCreator(creatorOptions);
+creator.saveSurveyFunc = (saveNo, callback) => { 
+    window.localStorage.setItem("survey-json", creator.text);
+    callback(saveNo, true);
+    // saveSurveyJson(
+    //     "https://your-web-service.com/",
+    //     creator.JSON,
+    //     saveNo,
+    //     callback
+    // );
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+    creator.render("surveyCreator");
+});
