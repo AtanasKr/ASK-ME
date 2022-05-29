@@ -16,6 +16,20 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+var userUid;
+
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     //getting user ref in order to reach user data in database
+//     userUid = user.uid;
+//     // ...
+//   } else {
+//     // User is signed out
+//     console.log("The user is signed off!");
+//   }
+// });
+
 
   
     function surveyResultModel(id, name, facnum, results) {
@@ -55,6 +69,7 @@ const database = getDatabase(app);
       self.showSurveyResult = function(item) {
         localStorage.setItem("jsonToVisualize",surveyJSONFromDB[item.id-1].json);
         localStorage.setItem("counterRow",surveyJSONFromDB[item.id-1].counter);
+        localStorage.setItem("surveyData",JSON.stringify(surveyResultsDataFromDB[item.id-1].results));
         debugger;
         window.location="resultVisualize.html"
       };
@@ -74,6 +89,9 @@ const database = getDatabase(app);
               var holderForSurvey = {
                 json:"",
                 counter:""
+              }
+              if(true){
+                
               }
               console.log(childSnapshot.val().jsonSurvey)
               holderForTable.name=childSnapshot.val().name;
