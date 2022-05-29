@@ -93,7 +93,6 @@ auth.onAuthStateChanged((user) => {
               }
               debugger;
               if(userUid===childSnapshot.val().from){
-                console.log(childSnapshot.val().jsonSurvey)
                 holderForTable.name=childSnapshot.val().name;
                 holderForTable.facnum = childSnapshot.val().fnum;
                 holderForTable.results = JSON.parse(childSnapshot.val().jsonResult);
