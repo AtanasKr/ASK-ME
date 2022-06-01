@@ -57,13 +57,3 @@ const auth = getAuth();
         console.log(error.message);
       });
   });
-
-  document.getElementById("signOut").addEventListener("click",(e)=>{
-    signOut(auth).then(() => {
-        // Sign-out successful.
-        window.location = 'index.html';
-      }).catch((error) => {
-        // An error happened.
-        console.log(error.message);
-      });
-  });
