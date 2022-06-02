@@ -91,7 +91,6 @@ auth.onAuthStateChanged((user) => {
                 json:"",
                 counter:""
               }
-              debugger;
               if(userUid===childSnapshot.val().from){
                 holderForTable.name=childSnapshot.val().name;
                 holderForTable.facnum = childSnapshot.val().fnum;

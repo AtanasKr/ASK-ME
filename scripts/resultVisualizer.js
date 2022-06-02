@@ -1,6 +1,4 @@
-
-
-  Survey.StylesManager.applyTheme("default");
+Survey.StylesManager.applyTheme("default");
 var json = JSON.parse(localStorage.getItem("jsonToVisualize"));
 window.survey = new Survey.Model(json);
 survey.onComplete.add(function (sender) {
