@@ -55,11 +55,12 @@ function sendResults(){
 }
 
 function deleteSurvey(){
-    const refToDelete = ref(database,'surveyHolder/'+from+"-survey/"+id);
-    const allSurveys = ref(database,"surveyHolder/"+from+"-survey");
+    const refToDelete = ref(database,'surveyHolder/'+userUid+"-survey/"+id);
+    const allSurveys = ref(database,"surveyHolder/"+userUid+"-survey");
     onValue(allSurveys, (snapshot) => {
         const data = snapshot;
         data.forEach(function(childSnapshot){
+          debugger;
           if(id===childSnapshot.val().id){
             return remove(refToDelete);
           }
@@ -67,7 +68,11 @@ function deleteSurvey(){
     });
 }
 
+
 document.getElementById("sendResults").addEventListener("click",(e)=>{
-    sendResults();
-    deleteSurvey();
+  sendResults();
+  deleteSurvey();
+  setTimeout(() => {
+    window.location="panelStudent.html"
+  }, "1000")
 })
