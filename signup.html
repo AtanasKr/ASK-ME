@@ -8,25 +8,25 @@
     <title>Sign up</title>
 </head>
 <body>
-    <a href="index.html" class="button" id="left">Back</a>
-    <p class="welcome">Welcome to Ask. Me?</p>
-    <p class="role-info">I am a?</p>
+    <a href="index.html" class="button" id="left">Назад</a>
+    <p class="welcome">Добре дошли в Ask. Me?</p>
+    <p class="role-info">Аз съм?</p>
 
     <div class="radio-btns">
         <input type="radio" id="studentBtn" name="drone" value="Student" onclick="enableFnum()">
-        <label class="radio-btn-text" for="Student">Student</label>
+        <label class="radio-btn-text" for="Student">Студент</label>
         <input type="radio" id="teacherBtn" name="drone" value="Teacher" onclick="disableFnum()">
-        <label class="radio-btn-text2" for="Teacher">Teacher</label>
+        <label class="radio-btn-text2" for="Teacher">Преподавател</label>
     </div>
 
     <div class="info-fillers">
-        <input type="text" id="fname" placeholder="Enter your full name ..." name="fname"><br><br>
-        <input type="text" id="femail" placeholder="Enter your email ..." name="femail"><br><br>
-        <input type="number" id="fnumber" placeholder="Enter your faculty number ..." name="fnumber"><br><br>
-        <input type="password" id="fpass" placeholder="Enter your password ..." name="fpass"><br><br>
+        <input type="text" id="fname" placeholder="Въведете вашето име ..." name="fname"><br><br>
+        <input type="text" id="femail" placeholder="Въведете вашия имейл ..." name="femail"><br><br>
+        <input type="number" id="fnumber" placeholder="Въведете вашия факултетен номер ..." name="fnumber"><br><br>
+        <input type="password" id="fpass" placeholder="Въведете вашата парола ..." name="fpass"><br><br>
     </div>
     
-    <a href="#" id="signUp" class="signup-btn">Sign up</a>
+    <a href="#" id="signUp" class="signup-btn">Регистрация</a>
     <script>
         function disableFnum() {
           document.getElementById("fnumber").disabled = true;
