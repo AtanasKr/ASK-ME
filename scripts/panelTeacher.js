@@ -29,7 +29,7 @@ auth.onAuthStateChanged((user) => {
       const userRef = ref(database, 'users/' + user.uid + '/username');
       onValue(userRef, (snapshot) => {
       const data = snapshot.val();
-      document.getElementById("name").innerHTML = "Welcome: "+data; 
+      document.getElementById("name").innerHTML = "Добре дошли: "+data; 
 });
       // ...
     } else {
