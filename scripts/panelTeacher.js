@@ -47,3 +47,5 @@ auth.onAuthStateChanged((user) => {
         console.log(error.message);
       });
   });
+
+//© Atanas Krstev 2022 All rights reserved
