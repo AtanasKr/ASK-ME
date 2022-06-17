@@ -10,17 +10,17 @@
 
   <body>
     <div class="container-fuild header">
-      <h1 class="ml-5 p-2"><i class="fas fa-dice-d6 mt-2"></i> Result</h1>
+      <h1 class="ml-5 p-2"><i class="fas fa-dice-d6 mt-2"></i> Резултати</h1>
     </div>
 
     <div id="resultsTable" class="well">
-    <h3>Survey Results</h3>
+    <h3>Резултати от пручвания</h3>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Faculty Number</th>
+          <th scope="col">Име</th>
+          <th scope="col">Факилтетен номер</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -31,14 +31,14 @@
         <td data-bind="text:item.name"></td>
         <td data-bind="text:item.facnum"></td>
         <td>
-        <button data-bind="click: $parent.showSurveyResult">Go To Survey Results</button>
+        <button data-bind="click: $parent.showSurveyResult">Проверка на резултати</button>
         </td>
       </tr>
       <!-- /ko -->
       </tbody>
     </table>
     </div>
-    <a href="panelTeacher.html" class="button">Back</a>
+    <a href="panelTeacher.html" class="button">Назад</a>
 
     <script type="module" src="scripts/surveyResults.js"></script>
   </body>
