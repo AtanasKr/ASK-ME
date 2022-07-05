@@ -28,7 +28,7 @@ function clearList(){
 function addElementToList(surveyJson,from,id,name,fnum){
     var completelist= document.getElementById("pendingList");
     
-    completelist.innerHTML += "<li><input type='text' disabled value='"+fnum+"' id='"+counter+"fnum'><input type='text' disabled value='"+name+"' id='"+counter+"name'><input type='text' disabled value='"+id+"' id='"+counter+"id'><input type='text' disabled value='"+from+"' id='"+counter+"from'><input type='text' disabled value='"+surveyJson+"' id='"+counter+"'>" + "<button onclick='goToFunc("+counter+")'> <span class='tooltiptext' id='myTooltip'>Go to Survey"+counter+"</span></button></li><br>";
+    completelist.innerHTML += "<li><input type='text' disabled style='display:none' value='"+fnum+"' id='"+counter+"fnum'><input type='text' disabled style='display:none' value='"+name+"' id='"+counter+"name'><input type='text' disabled style='display:none' value='"+id+"' id='"+counter+"id'><input type='text' disabled style='display:none' value='"+from+"' id='"+counter+"from'><input type='text' disabled style='display:none' value='"+surveyJson+"' id='"+counter+"'>" + "<button onclick='goToFunc("+counter+")'> <span class='tooltiptext' id='myTooltip'>Решаване на проучване "+counter+"</span></button></li><br>";
     counter++;
 }
 auth.onAuthStateChanged((user) => {
