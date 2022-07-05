@@ -27,19 +27,19 @@ const auth = getAuth();
         const userRef = ref(database, 'users/' + user.uid + '/username');
         onValue(userRef, (snapshot) => {
             const data = snapshot.val();
-            document.getElementById("name").innerHTML = "Name: "+data;     
+            document.getElementById("name").innerHTML = "Име: "+data;     
         });
 
         const groupRef = ref(database, 'users/' + user.uid + '/email');
         onValue(groupRef, (snapshot) => {
             const data = snapshot.val();
-            document.getElementById("email").innerHTML = "Email: "+data;     
+            document.getElementById("email").innerHTML = "Имейл: "+data;     
         });
 
         const facNumRef = ref(database, 'users/' + user.uid + '/fnum');
         onValue(facNumRef, (snapshot) => {
             const data = snapshot.val();
-            document.getElementById("fnum").innerHTML = "Faculty number: "+data;     
+            document.getElementById("fnum").innerHTML = "Факултетен номер: "+data;     
         });
       // ...
     } else {
