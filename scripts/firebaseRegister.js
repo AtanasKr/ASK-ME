@@ -37,8 +37,9 @@ document.getElementById("signUp").addEventListener("click",(e)=>{
   }else if(teacherBtn.checked){
     role = "Teacher"
   }
-
-if((role==="Student"&&(email===""||password===""||fnum===""||role===""))||(role==="Teacher"&&(email===""||password===""||role===""))){
+if(role===""){
+  alert("Please select role!");
+}else if((role==="Student"&&(email===""||password===""||fnum===""))||(role==="Teacher"&&(email===""||password===""))){
   alert("Please enter valid information!")
 }else if(fnum.length!==9&&role!=="Teacher"){
   alert("Entered faculty number is invalid!")
