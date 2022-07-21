@@ -2,8 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase
 import { getDatabase, ref, onValue, push, update} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 import { getAuth} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase configuration
+// For Firebase JS SDK v7.20.0 and later
 const firebaseConfig = {
     apiKey: "AIzaSyDkZEmYPaS6ZU4pq3mkTFrO9r7Ua_1i-Jo",
     authDomain: "ask-me-1d534.firebaseapp.com",
