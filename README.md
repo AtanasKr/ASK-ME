@@ -7,7 +7,7 @@ The system allows for the creation of custom and dynamic surveys by the teacher 
 
 The system fatures include:
 
--crating of personal account
+-crating of personal account</br>
 -development of dynamic surveys
 -recieving the pending survey
 -data processing and managment
