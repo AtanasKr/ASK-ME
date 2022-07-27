@@ -12,6 +12,13 @@ The system fatures include:
 -recieving the pending survey</br>
 -data processing and managment</br>
 
-Included technologies in the project are: SurveyJs, Knockout, Firebase, React, Javascript, HTML and CSS.
+Included technologies in the project are: 
+-SurveyJs</br>
+-Knockout</br>
+-Firebase</br>
+-React</br>
+-Javascript</br>
+-HTML</br>
+-CSS.
 
 © Atanas Krstev 2022 All rights reserved
