@@ -8,9 +8,9 @@ The system allows for the creation of custom and dynamic surveys by the teacher 
 The system fatures include:
 
 -crating of personal account</br>
--development of dynamic surveys
--recieving the pending survey
--data processing and managment
+-development of dynamic surveys</br>
+-recieving the pending survey</br>
+-data processing and managment</br>
 
 Included technologies in the project are: SurveyJs, Knockout, Firebase, React, Javascript, HTML and CSS.
 
