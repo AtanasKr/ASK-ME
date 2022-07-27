@@ -1,5 +1,5 @@
 Survey.StylesManager.applyTheme("default");
-var json = JSON.parse(localStorage.getItem("jsonToVisualize"));
+let json = JSON.parse(localStorage.getItem("jsonToVisualize"));
 window.survey = new Survey.Model(json);
 survey.onComplete.add(function (sender) {
   document.querySelector('#surveyResult').textContent = "Result JSON:\n" + JSON.stringify(sender.data, null, 3);

@@ -18,7 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
-var userUid;
+let userUid;
 
 auth.onAuthStateChanged((user) => {
   if (user) {
@@ -35,7 +35,7 @@ auth.onAuthStateChanged((user) => {
 
   
     function surveyResultModel(id, name, facnum, results) {
-      var self = this;
+      let self = this;
       self.id = id;
       self.name = name;
       self.facnum = facnum;
@@ -49,14 +49,14 @@ auth.onAuthStateChanged((user) => {
       };
     }
 
-    var surveyResultsDataFromDB=[];
-    var surveyJSONFromDB = [];
+    let surveyResultsDataFromDB=[];
+    let surveyJSONFromDB = [];
     function surveyResultsModel(data) {
-      var self = this;
-      var items = [];
+      let self = this;
+      let items = [];
       if (data) {
-        for (var i = 0; i < data.length; i++) {
-          var item = data[i];
+        for (let i = 0; i < data.length; i++) {
+          let item = data[i];
           items.push(
             new surveyResultModel(
               i + 1,
@@ -79,15 +79,15 @@ auth.onAuthStateChanged((user) => {
     const resultRef = ref(database, 'resultHolder');
         onValue(resultRef, (snapshot) => {
             const data = snapshot;
-            var count = 0;
+            let count = 0;
             data.forEach(function(childSnapshot){
-              var holderForTable = {
+              let holderForTable = {
                 name:"",
                 facnum:"",
                 results:""
               };
               
-              var holderForSurvey = {
+              let holderForSurvey = {
                 json:"",
                 counter:""
               }

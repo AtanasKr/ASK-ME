@@ -17,10 +17,10 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-var counter= 1;
+let counter= 1;
 
 function clearList(){
-    var completelist= document.getElementById("pendingList");
+    let completelist= document.getElementById("pendingList");
     counter = 1;
     completelist.innerHTML = "";
 }

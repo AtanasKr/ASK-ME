@@ -2,7 +2,7 @@ Survey
     .StylesManager
     .applyTheme("defaultV2");
 
-var json = localStorage.getItem("jsonText"); 
+let json = localStorage.getItem("jsonText"); 
 
 window.survey = new Survey.Model(json);
 survey

@@ -20,13 +20,13 @@ const database = getDatabase(app);
 
 
 document.getElementById("signUp").addEventListener("click",(e)=>{
-  var email = document.getElementById('femail').value;
-  var password = document.getElementById('fpass').value;
-  var username = document.getElementById('fname').value;
-  var fnum = document.getElementById('fnumber').value;
-  var studentBtn = document.getElementById("studentBtn");
-  var teacherBtn = document.getElementById("teacherBtn");
-  var role = "";
+  let email = document.getElementById('femail').value;
+  let password = document.getElementById('fpass').value;
+  let username = document.getElementById('fname').value;
+  let fnum = document.getElementById('fnumber').value;
+  let studentBtn = document.getElementById("studentBtn");
+  let teacherBtn = document.getElementById("teacherBtn");
+  let role = "";
   const auth = getAuth();
 
   if(studentBtn.checked){

@@ -2,12 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase
 import { getDatabase, ref, onValue, push, update, remove} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
 import { getAuth} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 
-var jsonSurvey = localStorage.getItem("jsonText");
-var jsonResult = localStorage.getItem("surveyResult"); 
-var from = localStorage.getItem("fromText");
-var id = localStorage.getItem("idText");
-var name = localStorage.getItem("nameText");
-var fnum = localStorage.getItem("fnumText");
+let jsonSurvey = localStorage.getItem("jsonText");
+let jsonResult = localStorage.getItem("surveyResult"); 
+let from = localStorage.getItem("fromText");
+let id = localStorage.getItem("idText");
+let name = localStorage.getItem("nameText");
+let fnum = localStorage.getItem("fnumText");
 
 const firebaseConfig = {
     apiKey: "AIzaSyDkZEmYPaS6ZU4pq3mkTFrO9r7Ua_1i-Jo",
@@ -22,7 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
-var userUid;
+let userUid;
 
 auth.onAuthStateChanged((user) => {
     if (user) {

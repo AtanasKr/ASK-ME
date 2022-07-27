@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-var userHolder;
+let userHolder;
 
 auth.onAuthStateChanged((user) => {
     if (user) {
@@ -61,8 +61,8 @@ function sendSurveyToStudent(number,surveyJson){
 
 
 document.getElementById("send").addEventListener("click",(e)=>{
-    var studentNumber = document.getElementById('student-facnum').value;
-    var surveyJson = document.getElementById('survey-json').value;
+    let studentNumber = document.getElementById('student-facnum').value;
+    let surveyJson = document.getElementById('survey-json').value;
     if(studentNumber.length!=9){
         alert("Wrong faculty number!");
     }else{
